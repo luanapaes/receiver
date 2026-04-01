@@ -16,7 +16,7 @@ jobs:
       - name: Download file from repo webhook
         run: |
           curl -L \
-          https://raw.githubusercontent.com/luanapaes/webhook/main.js \
+          https://raw.githubusercontent.com/luanapaes/webhook/main/main.js \
           -o main.js
 
       - name: Commit changes
