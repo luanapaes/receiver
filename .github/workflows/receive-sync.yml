@@ -5,6 +5,9 @@ on:
   repository_dispatch:
     types: [sync_main_js]
 
+permissions:
+  contents: write
+
 jobs:
   update-file:
     runs-on: ubuntu-latest
