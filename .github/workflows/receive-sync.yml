@@ -1,0 +1,29 @@
+# .github/workflows/receive-sync.yml
+name: Receive Sync
+
+on:
+  repository_dispatch:
+    types: [sync_main_js]
+
+jobs:
+  update-file:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo receiver
+        uses: actions/checkout@v4
+
+      - name: Download file from repo webhook
+        run: |
+          curl -L \
+          https://raw.githubusercontent.com/luanapaes/webhook/main.js \
+          -o main.js
+
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+
+          git add main.js
+          git commit -m "Auto sync main.js from repo webhook" || echo "No changes"
+          git push
