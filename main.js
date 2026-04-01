@@ -1,1 +1,7 @@
-const pi = 3.14;
+function sayHi(){
+    console.log("Hello World!");
+}
+
+sayHi();
+
+console.log("Rodou! :)");
